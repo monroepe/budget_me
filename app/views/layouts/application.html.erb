@@ -8,6 +8,21 @@
 </head>
 <body>
 
+<div class = "nav_container">
+  <p><%= link_to "Home", root_path %></p>
+
+  <% if signed_in? %>
+    <%= current_user.email %>
+    <%= link_to "Sign out", destroy_user_session_path, data: { method: 'delete' }%>
+  <% else %>
+    <%= link_to "Sign in", new_user_session_path %>
+  <% end %>
+
+</div>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
 <%= yield %>
 
 </body>
