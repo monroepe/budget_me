@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   resources :budgets do
-    resources :transaction, only: [:new, :create, :edit, :update, :destroy]
+    resources :transactions, only: [:new, :create, :edit, :update, :destroy]
   end
 end

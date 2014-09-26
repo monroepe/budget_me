@@ -1,9 +1,12 @@
-class TranactionsController < ApplicationController
+class TransactionsController < ApplicationController
   def new
+    @types = Type.all
+    @budget = current_user.budgets.find(params[:budget_id])
     @transaction = Transaction.new
   end
 
   def create
+    @types = Type.all
     @budget = current_user.budgets.find(params[:budget_id])
     @transaction = @budget.transactions.build(transaction_params)
 
