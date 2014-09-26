@@ -1,0 +1,29 @@
+<h1><%= @budget.name %></h1>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Amount</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+  <% @transactions.each do |transaction| %>
+    <tr>
+      <td><%= transaction.name %></td>
+      <td>$<%= transaction.amount %></td>
+      <td><%= transaction.type.name %></td>
+      <td><%= transaction.description %></td>
+      <td><%= link_to "Edit", edit_budget_transaction_path(@budget, transaction) %></td>
+      <td><%= link_to "Delete", budget_transaction_path(@budget, transaction), method: :delete, data: { confirm: "Are your sure?" } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Add new transaction", new_budget_transaction_path(@budget, @transaction) %></p>
+
+<p>
+<%= link_to "Edit Name", edit_budget_path(@budget) %>
+<%= link_to "Delete Budget", @budget, method: :delete, data: { confirm: "Are your sure?" } %>
+</p>
+
+<p><%= link_to 'Back', budgets_path %></p>
