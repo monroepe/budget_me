@@ -18,7 +18,7 @@ class BudgetsController < ApplicationController
     @budget = current_user.budgets.build(budget_params)
 
     if @budget.save
-      redirect_to @budget
+      redirect_to @budget, notice: 'Budget created successfully!'
     else
       render "new"
     end
@@ -32,7 +32,7 @@ class BudgetsController < ApplicationController
     @budget = current_user.budgets.find(params[:id])
 
     if @budget.update(budget_params)
-      redirect_to @budget
+      redirect_to @budget, notice: 'Budget name updated successfully!'
     else
       render "edit"
     end
