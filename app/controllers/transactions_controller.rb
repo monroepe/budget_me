@@ -36,7 +36,12 @@ class TransactionsController < ApplicationController
   end
 
   def destroy
+    @budget = current_user.budgets.find(params[:budget_id])
+    @transaction = @budget.transactions.find(params[:id])
 
+    @transaction.destroy
+
+    redirect_to budget_path(@budget)
   end
 
   private

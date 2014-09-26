@@ -14,6 +14,7 @@
       <td><%= transaction.type.name %></td>
       <td><%= transaction.description %></td>
       <td><%= link_to "Edit", edit_budget_transaction_path(@budget, transaction) %></td>
+      <td><%= link_to "Delete", budget_transaction_path(@budget, transaction), method: :delete, data: { confirm: "Are your sure?" } %></td>
     </tr>
   <% end %>
 </table>
