@@ -8,6 +8,7 @@ class BudgetsController < ApplicationController
 
   def show
     @budget = current_user.budgets.find(params[:id])
+    @transactions = @budget.transactions
   end
 
   def new

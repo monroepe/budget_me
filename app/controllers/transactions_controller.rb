@@ -11,18 +11,28 @@ class TransactionsController < ApplicationController
     @transaction = @budget.transactions.build(transaction_params)
 
     if @transaction.save
-      redirect_to @budget, notice: 'Transaction created successfully!'
+      redirect_to @budget, notice: "Transaction created successfully!"
     else
       render "new"
     end
   end
 
   def edit
-
+    @types = Type.all
+    @budget = current_user.budgets.find(params[:budget_id])
+    @transaction = @budget.transactions.find(params[:id])
   end
 
   def update
+    @types = Type.all
+    @budget = current_user.budgets.find(params[:budget_id])
+    @transaction = @budget.transactions.find(params[:id])
 
+    if @transaction.update(transaction_params)
+      redirect_to @budget, notice: "Transaction updated successfully!"
+    else
+      render "edit"
+    end
   end
 
   def destroy
