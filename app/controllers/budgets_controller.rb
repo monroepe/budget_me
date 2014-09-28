@@ -9,6 +9,9 @@ class BudgetsController < ApplicationController
   def show
     @budget = current_user.budgets.find(params[:id])
     @transactions = @budget.transactions
+
+    @spent = spent(@transactions)
+    @income = income(@transactions)
   end
 
   def new
@@ -51,6 +54,28 @@ class BudgetsController < ApplicationController
 
   def budget_params
     params.require(:budget).permit(:name)
+  end
+
+  def spent(transactions)
+    spent = 0
+
+    transactions.each do |transaction|
+      if transaction.type.name == "Expense"
+        spent += transaction.amount
+      end
+    end
+    spent
+  end
+
+  def income(transactions)
+    income = 0
+
+    transactions.each do |transaction|
+      if transaction.type.name == "Income"
+        income += transaction.amount
+      end
+    end
+    income
   end
 
 end
