@@ -16,18 +16,3 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
-
-$(function() {
-  $('.tabs-nav a').on('click', function(event) {
-    event.preventDefault();
-
-    var $currentTab = $(this);
-    $currentTab.addClass('active');
-    $currentTab.siblings().removeClass('active');
-
-    var currentTabPaneSelector = $currentTab.attr('href');
-    var $currentTabPane = $(currentTabPaneSelector);
-    $currentTabPane.addClass('active');
-    $currentTabPane.siblings().removeClass('active');
-  });
-});
