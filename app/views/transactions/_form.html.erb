@@ -12,20 +12,22 @@
   </div>
   <% end %>
 
-  <p>
-    <%= f.label :name %>: <%= f.text_field :name %>
+  <p class="form-field">
+    <%= f.label :name %> <%= f.text_field :name %>
 
-    <%= f.label :amount %>: <%= f.text_field :amount %>
+    <%= f.label :amount %> <%= f.text_field :amount %>
 
-    <%= f.label :type %>: <%= f.collection_select :type_id, @types, :id, :name,prompt: "Select a Type" %>
+    <%= f.label :type %> <%= f.collection_select :type_id, @types, :id, :name, prompt: "Select a Type" %>
+
+    <%= f.label :category %> <%= f.collection_select :category_id, @categories, :id, :name, prompt: "Select a Category" %>
   </p>
 
-  <p>
-    <%= f.label :description %>:<br />
+  <p class="form-field">
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </p>
 
-  <p>
+  <p class="form-field">
     <%= f.submit %>
   </p>
 <% end %>
