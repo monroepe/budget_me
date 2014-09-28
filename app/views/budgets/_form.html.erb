@@ -12,12 +12,11 @@
   </div>
   <% end %>
 
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name, size: "40x1" %>
+  <p class="form-field">
+    <%= f.text_field :name, placeholder: "Name" %>
   </p>
 
-  <p>
+  <p class="form-field">
     <%= f.submit %>
   </p>
 <% end %>
