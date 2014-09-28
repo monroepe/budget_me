@@ -1,17 +1,25 @@
 <h1><%= @budget.name %></h1>
 
-<p>Spent: </p>
+<h3>Details</h3>
+
+<p>Total Income: $<%= @income %></p>
+<p>Total Spent: $<%= @spent %></p>
+<% if @income > @spent %>
+  <p class="income">Amount Left: $<%= (@income - @spent) %></p>
+<% else %>
+  <p class="expense">Amount Left: $<%= (@income - @spent) %></p>
+<% end %>
 
 <h4>Items</h4>
-<table>
-  <tr>
-    <th>Item</th>
-    <th>Amount</th>
-    <th>Type</th>
-    <th>Category</th>
-    <th>Description</th>
-  </tr>
-  <% @transactions.each do |transaction| %>
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Amount</th>
+      <th>Type</th>
+      <th>Category</th>
+      <th>Description</th>
+    </tr>
+    <% @transactions.each do |transaction| %>
     <tr>
       <td><%= transaction.name %></td>
       <% if transaction.type.name == "Expense" %>
@@ -25,8 +33,8 @@
       <td><%= link_to "Edit", edit_budget_transaction_path(@budget, transaction) %></td>
       <td><%= link_to "Delete", budget_transaction_path(@budget, transaction), method: :delete, data: { confirm: "Are your sure?" } %></td>
     </tr>
-  <% end %>
-</table>
+    <% end %>
+  </table>
 
 <p><%= link_to "Add new transaction", new_budget_transaction_path(@budget, @transaction) %></p>
 
