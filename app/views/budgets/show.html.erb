@@ -26,6 +26,7 @@
         <th>Type</th>
         <th>Category</th>
         <th>Description</th>
+        <th>Date</th>
       </tr>
       <% @transactions.each do |transaction| %>
       <tr>
@@ -38,6 +39,11 @@
         <td><%= transaction.type.name %></td>
         <td><%= transaction.category.name %></td>
         <td><%= transaction.description %></td>
+        <% if transaction.date %>
+          <td><%= transaction.date.strftime("%m/%d/%Y") %></td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td><%= link_to "Edit", edit_budget_transaction_path(@budget, transaction) %></td>
         <td><%= link_to "Delete", budget_transaction_path(@budget, transaction), method: :delete, data: { confirm: "Are your sure?" } %></td>
       </tr>

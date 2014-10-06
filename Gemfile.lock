@@ -89,6 +89,8 @@ GEM
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    pickadate-rails (3.5.4.0)
+      railties (>= 3.1.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -184,6 +186,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   pg
+  pickadate-rails
   pry-rails
   rails (= 4.1.6)
   rspec-rails

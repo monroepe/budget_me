@@ -1,7 +1,7 @@
-require 'coveralls'
-require 'capybara/rspec'
+require "coveralls"
+require "capybara/rspec"
 
-Coveralls.wear!('rails')
+Coveralls.wear!("rails")
 
 
 RSpec.configure do |config|
