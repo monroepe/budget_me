@@ -10,8 +10,8 @@ class BudgetsController < ApplicationController
     @budget = current_user.budgets.find(params[:id])
     @transactions = @budget.transactions.order("created_at")
 
-    @spent = spent(@transactions)
-    @income = income(@transactions)
+    @spent = 10
+    @income = 10
   end
 
   def new
@@ -57,25 +57,11 @@ class BudgetsController < ApplicationController
   end
 
   def spent(transactions)
-    spent = 0
 
-    transactions.each do |transaction|
-      if transaction.type.name == "Expense"
-        spent += transaction.amount
-      end
-    end
-    spent
   end
 
   def income(transactions)
-    income = 0
 
-    transactions.each do |transaction|
-      if transaction.type.name == "Income"
-        income += transaction.amount
-      end
-    end
-    income
   end
 
 end

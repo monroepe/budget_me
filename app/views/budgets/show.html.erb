@@ -2,8 +2,10 @@
 
 <dl class="tabs" data-tab>
   <dd class="active"><a href="#panel1">Details</a></dd>
-  <dd><a href="#panel2">Line Items</a></dd>
+  <dd><a href="#panel2">Tranascations</a></dd>
+  <dd><a href="#panel3">Budget</a></dd>
 </dl>
+
 <div class="tabs-content">
   <div class="content active" id="panel1">
     <h3>Details</h3>
@@ -23,7 +25,6 @@
       <tr>
         <th>Item</th>
         <th>Amount</th>
-        <th>Type</th>
         <th>Category</th>
         <th>Description</th>
         <th>Date</th>
@@ -31,12 +32,7 @@
       <% @transactions.each do |transaction| %>
       <tr>
         <td><%= transaction.name %></td>
-        <% if transaction.type.name == "Expense" %>
-          <td class="expense">-$<%= sprintf('%.2f', transaction.amount) %></td>
-        <% else %>
-          <td class="income">$<%= sprintf('%.2f', transaction.amount) %></td>
-        <% end %>
-        <td><%= transaction.type.name %></td>
+        <td><%= sprintf('%.2f', transaction.amount) %></td>
         <td><%= transaction.category.name %></td>
         <td><%= transaction.description %></td>
         <% if transaction.date %>
@@ -50,7 +46,11 @@
       <% end %>
     </table>
 
-    <p><%= link_to "Add new transaction", new_budget_transaction_path(@budget, @transaction) %></p>
+    <p><%= link_to "Add new transaction", new_budget_transaction_path(@budget, type: 'Expense') %></p>
+  </div>
+  <div class="content active" id="panel3">
+  <p>Coming Soon</p>
+  <p><%= link_to "New Line Item", new_budget_transaction_path(@budget) %></p>
   </div>
 </div>
 

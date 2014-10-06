@@ -19,8 +19,6 @@
 
     <%= f.label :amount %> <%= f.text_field :amount %>
 
-    <%= f.label :type %> <%= f.collection_select :type_id, Type.all, :id, :name, prompt: "Select a Type" %>
-
     <%= f.label :category %> <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Select a Category" %>
   </p>
 
