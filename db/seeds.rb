@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 categories = Category.create([{name: "Bills"}, {name: "Food"}, {name: "Toiletries"}, {name: "Clothes"}, {name: "Car"}, {name: "Recreation"}, {name: "Pay"}, {name: "Other"}])
+types = Type.create([{ name: "Expense" }, { name: "Income" }])
