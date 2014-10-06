@@ -1,14 +1,10 @@
 class TransactionsController < ApplicationController
   def new
-    @types = Type.all
-    @categories = Category.all
     @budget = current_user.budgets.find(params[:budget_id])
     @transaction = Transaction.new
   end
 
   def create
-    @types = Type.all
-    @categories = Category.all
     @budget = current_user.budgets.find(params[:budget_id])
     @transaction = @budget.transactions.build(transaction_params)
 
@@ -20,15 +16,11 @@ class TransactionsController < ApplicationController
   end
 
   def edit
-    @types = Type.all
-    @categories = Category.all
     @budget = current_user.budgets.find(params[:budget_id])
     @transaction = @budget.transactions.find(params[:id])
   end
 
   def update
-    @types = Type.all
-    @categories = Category.all
     @budget = current_user.budgets.find(params[:budget_id])
     @transaction = @budget.transactions.find(params[:id])
 

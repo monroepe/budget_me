@@ -60,7 +60,7 @@ class BudgetsController < ApplicationController
     spent = 0
 
     transactions.each do |transaction|
-      if transaction.type.name == "Expense"
+      if transaction.expense?
         spent += transaction.amount
       end
     end
@@ -71,7 +71,7 @@ class BudgetsController < ApplicationController
     income = 0
 
     transactions.each do |transaction|
-      if transaction.type.name == "Income"
+      if !transaction.expense?
         income += transaction.amount
       end
     end
