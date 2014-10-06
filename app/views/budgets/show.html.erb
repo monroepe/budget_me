@@ -10,12 +10,12 @@
   <div class="content active" id="panel1">
     <h3>Details</h3>
 
-    <p>Total Income: $<%= @income %></p>
-    <p>Total Spent: $<%= @spent %></p>
+    <p>Total Income: $<%= sprintf('%.2f', @income) %></p>
+    <p>Total Spent: $<%= sprintf('%.2f',@spent.abs) %></p>
     <% if @income > @spent %>
-      <p class="income">Amount Left: $<%= (@income - @spent) %></p>
+      <p class="income">Amount Left: $<%= sprintf('%.2f', (@income - @spent.abs)) %></p>
     <% else %>
-      <p class="expense">Amount Left: $<%= (@income - @spent) %></p>
+      <p class="expense">Amount Left: $<%= sprintf('%.2f', (@income - @spent.abs)) %></p>
     <% end %>
   </div>
 
@@ -32,7 +32,11 @@
       <% @transactions.each do |transaction| %>
       <tr>
         <td><%= transaction.name %></td>
-        <td><%= sprintf('%.2f', transaction.amount) %></td>
+        <% if transaction.amount > 0 %>
+          <td class="income">$<%= sprintf('%.2f', transaction.amount) %></td>
+        <% else %>
+           <td class="expense">$<%= sprintf('%.2f', transaction.amount) %></td>
+        <% end %>
         <td><%= transaction.category.name %></td>
         <td><%= transaction.description %></td>
         <% if transaction.date %>
@@ -48,10 +52,12 @@
 
     <p><%= link_to "Add new transaction", new_budget_transaction_path(@budget, type: 'Expense') %></p>
   </div>
-  <div class="content active" id="panel3">
-  <p>Coming Soon</p>
-  <p><%= link_to "New Line Item", new_budget_transaction_path(@budget) %></p>
+
+  <div class="content" id="panel3">
+    <p>Coming Soon</p>
+    <p><%= link_to "New Line Item", new_budget_transaction_path(@budget) %></p>
   </div>
+
 </div>
 
 <p>
