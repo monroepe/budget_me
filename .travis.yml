@@ -3,3 +3,5 @@ rvm:
   - 2.1.0
 before_script:
   - psql -c 'create database budget_me_test;' -U postgres
+notifications:
+  email: false
