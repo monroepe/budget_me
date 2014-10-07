@@ -57,17 +57,15 @@
     <h4>Budget</h4>
     <table>
       <tr>
-        <th>Item</th>
-        <th>Amount</th>
         <th>Category</th>
+        <th>Amount</th>
         <th>Description</th>
         <th>Date</th>
       </tr>
       <% @budget_items.each do |budget_item| %>
       <tr>
-        <td><%= budget_item.name %></td>
-        <td>$<%= sprintf('%.2f', budget_item.amount) %></td>
         <td><%= budget_item.category.name %></td>
+        <td>$<%= sprintf('%.2f', budget_item.amount) %></td>
         <td><%= budget_item.description %></td>
         <% if budget_item.date %>
           <td><%= budget_item.date.strftime("%m/%d/%Y") %></td>
