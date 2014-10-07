@@ -1,0 +1,35 @@
+<%= render 'users/profile_header', current_tab: 'transactions' %>
+
+<h1>Transactions</h1>
+
+<table>
+      <tr>
+        <th>Item</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Date</th>
+      </tr>
+      <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.name %></td>
+        <% if transaction.amount > 0 %>
+          <td class="income"><%= number_to_currency(transaction.amount, precision: 2) %></td>
+        <% else %>
+           <td class="expense"><%= number_to_currency(transaction.amount, precision: 2, negative_format: "(%u%n)") %></td>
+        <% end %>
+        <td><%= transaction.category.name %></td>
+        <td><%= transaction.description %></td>
+        <% if transaction.date %>
+          <td><%= transaction.date.strftime("%m/%d/%Y") %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+        <td><%= link_to "Edit", edit_user_transaction_path(current_user, transaction) %></td>
+        <td><%= link_to "Delete", user_transaction_path(current_user, transaction), method: :delete, data: { confirm: "Are your sure?" } %></td>
+      </tr>
+      <% end %>
+    </table>
+    <%= paginate @transactions, window: 2 %>
+
+    <p><%= link_to "Add new transaction", new_user_transaction_path(current_user) %></p>

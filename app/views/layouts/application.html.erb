@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <div class="contain-to-grid">
     <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name">
@@ -50,8 +51,13 @@
     </ul>
   </section>
 </nav>
+</div>
 
-    <%= yield %>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= yield %>
+      </div>
+    </div>
 
     <%= javascript_include_tag "application" %>
   </body>
