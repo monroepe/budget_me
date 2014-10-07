@@ -8,8 +8,8 @@ class BudgetsController < ApplicationController
 
   def show
     @budget = current_user.budgets.find(params[:id])
-    @transactions = @budget.transactions.order("created_at")
-    @budget_items = @budget.budget_items
+    @transactions = @budget.transactions.order("created_at").page(params[:page])
+    @budget_items = @budget.budget_items.page(params[:page])
 
     @spent = spent(@transactions)
     @income = income(@transactions)

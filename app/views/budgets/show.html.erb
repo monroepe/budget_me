@@ -49,6 +49,7 @@
       </tr>
       <% end %>
     </table>
+    <%= paginate @transactions, window: 2 %>
 
     <p><%= link_to "Add new transaction", new_budget_transaction_path(@budget) %></p>
   </div>
@@ -77,6 +78,7 @@
       </tr>
       <% end %>
     </table>
+    <%= paginate @budget_items, window: 2 %>
 
     <p><%= link_to "New Budget Item", new_budget_budget_item_path(@budget) %></p>
   </div>
