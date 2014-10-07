@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006184428) do
+ActiveRecord::Schema.define(version: 20141006185524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "budget_items", force: true do |t|
+    t.string   "name",        null: false
+    t.decimal  "amount",      null: false
+    t.integer  "budget_id",   null: false
+    t.integer  "category_id", null: false
+    t.text     "description"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "budgets", force: true do |t|
     t.string   "name",       null: false

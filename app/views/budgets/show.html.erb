@@ -2,7 +2,7 @@
 
 <dl class="tabs" data-tab>
   <dd class="active"><a href="#panel1">Details</a></dd>
-  <dd><a href="#panel2">Tranascations</a></dd>
+  <dd><a href="#panel2">Transactions</a></dd>
   <dd><a href="#panel3">Budget</a></dd>
 </dl>
 
@@ -50,12 +50,37 @@
       <% end %>
     </table>
 
-    <p><%= link_to "Add new transaction", new_budget_transaction_path(@budget, type: 'Expense') %></p>
+    <p><%= link_to "Add new transaction", new_budget_transaction_path(@budget) %></p>
   </div>
 
   <div class="content" id="panel3">
-    <p>Coming Soon</p>
-    <p><%= link_to "New Line Item", new_budget_transaction_path(@budget) %></p>
+    <h4>Budget</h4>
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Date</th>
+      </tr>
+      <% @budget_items.each do |budget_item| %>
+      <tr>
+        <td><%= budget_item.name %></td>
+        <td>$<%= sprintf('%.2f', budget_item.amount) %></td>
+        <td><%= budget_item.category.name %></td>
+        <td><%= budget_item.description %></td>
+        <% if budget_item.date %>
+          <td><%= budget_item.date.strftime("%m/%d/%Y") %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+        <td><%= link_to "Edit", edit_budget_budget_item_path(@budget, budget_item) %></td>
+        <td><%= link_to "Delete", budget_budget_item_path(@budget, budget_item), method: :delete, data: { confirm: "Are your sure?" } %></td>
+      </tr>
+      <% end %>
+    </table>
+
+    <p><%= link_to "New Budget Item", new_budget_budget_item_path(@budget) %></p>
   </div>
 
 </div>
