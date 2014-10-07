@@ -10,12 +10,12 @@
   <div class="content active" id="panel1">
     <h3>Details</h3>
 
-    <p>Total Income: $<%= sprintf('%.2f', @income) %></p>
-    <p>Total Spent: $<%= sprintf('%.2f',@spent.abs) %></p>
-    <% if @income > @spent %>
-      <p class="income">Amount Left: $<%= sprintf('%.2f', (@income - @spent.abs)) %></p>
+    <p>Total Income: <%= number_to_currency(@income, precision: 2) %></p>
+    <p>Total Spent: <%= number_to_currency(@spent, precision: 2, negative_format: "(%u%n)") %></p>
+    <% if @income > @spent.abs %>
+      <p class="income">Amount Left: <%= number_to_currency((@income - @spent.abs), precision: 2) %></p>
     <% else %>
-      <p class="expense">Amount Left: $<%= sprintf('%.2f', (@income - @spent.abs)) %></p>
+      <p class="expense">Amount Left: <%= number_to_currency((@income - @spent.abs), precision: 2, negative_format: "(%u%n)") %></p>
     <% end %>
   </div>
 
@@ -33,9 +33,9 @@
       <tr>
         <td><%= transaction.name %></td>
         <% if transaction.amount > 0 %>
-          <td class="income">$<%= sprintf('%.2f', transaction.amount) %></td>
+          <td class="income"><%= number_to_currency(transaction.amount, precision: 2) %></td>
         <% else %>
-           <td class="expense">$<%= sprintf('%.2f', transaction.amount) %></td>
+           <td class="expense"><%= number_to_currency(transaction.amount, precision: 2, negative_format: "(%u%n)") %></td>
         <% end %>
         <td><%= transaction.category.name %></td>
         <td><%= transaction.description %></td>
@@ -65,7 +65,7 @@
       <% @budget_items.each do |budget_item| %>
       <tr>
         <td><%= budget_item.category.name %></td>
-        <td>$<%= sprintf('%.2f', budget_item.amount) %></td>
+        <td><%= number_to_currency(budget_item.amount, precision: 2) %></td>
         <td><%= budget_item.description %></td>
         <% if budget_item.date %>
           <td><%= budget_item.date.strftime("%m/%d/%Y") %></td>
