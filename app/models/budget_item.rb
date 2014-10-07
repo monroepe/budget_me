@@ -1,4 +1,4 @@
-class Transaction < ActiveRecord::Base
+class BudgetItem < ActiveRecord::Base
   belongs_to :budget
   belongs_to :category
 

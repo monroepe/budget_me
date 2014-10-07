@@ -37,12 +37,12 @@ class TransactionsController < ApplicationController
 
     @transaction.destroy
 
-    redirect_to budget_path(@budget)
+    redirect_to budget_path(@budget), notice: "Transaction item deleted"
   end
 
   private
 
   def transaction_params
-    params.require(:transaction).permit(:date, :name, :amount, :type_id, :category_id, :description)
+    params.require(:transaction).permit(:date, :name, :amount, :category_id, :description)
   end
 end

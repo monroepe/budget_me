@@ -21,4 +21,5 @@
 $(function(){
   $(document).foundation();
   $('#transaction_date').pickadate();
+  $('#budget_item_date').pickadate();
 });

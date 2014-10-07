@@ -1,11 +1,11 @@
-<%= form_for [@budget, @transaction] do |f| %>
+<%= form_for [@budget, @budget_item] do |f| %>
 
-  <% if @transaction.errors.any? %>
+  <% if @budget_item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+      <h2><%= pluralize(@budget_item.errors.count, "error") %> prohibited this budget item from being saved:</h2>
 
       <ul>
-        <% @transaction.errors.full_messages.each do |msg| %>
+        <% @budget_item.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
