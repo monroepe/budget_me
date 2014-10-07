@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20141006185524) do
   enable_extension "plpgsql"
 
   create_table "budget_items", force: true do |t|
-    t.string   "name",        null: false
     t.decimal  "amount",      null: false
     t.integer  "budget_id",   null: false
     t.integer  "category_id", null: false

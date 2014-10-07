@@ -13,13 +13,11 @@
   <% end %>
 
   <p class="form-field">
-    <%= f.label :date %> <%= f.text_field :date %>
-
-    <%= f.label :name %> <%= f.text_field :name %>
+    <%= f.label :category %> <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Select a Category" %>
 
     <%= f.label :amount %> <%= f.text_field :amount %>
 
-    <%= f.label :category %> <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Select a Category" %>
+    <%= f.label :date %> <%= f.text_field :date %>
   </p>
 
   <p class="form-field">
