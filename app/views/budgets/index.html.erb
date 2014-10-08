@@ -1,9 +1,11 @@
-<h2>View Your Budgets</h2>
+<%= render "users/profile_header", current_tab: "details" %>
 
-<ul>
-<% @budgets.each do |budget| %>
-  <li><%= link_to budget.name, budget_path(budget) %></li>
-<% end %>
-</ul>
+<h3>Details</h3>
 
-<%= link_to "New Budget", new_budget_path %>
+  <p>Total Income: <%= number_to_currency(@income, precision: 2) %></p>
+  <p>Total Spent: <%= number_to_currency(@spent, precision: 2, negative_format: "(%u%n)") %></p>
+  <% if @income > @spent.abs %>
+    <p class="income">Amount Left: <%= number_to_currency((@income - @spent.abs), precision: 2) %></p>
+  <% else %>
+    <p class="expense">Amount Left: <%= number_to_currency((@income - @spent.abs), precision: 2, negative_format: "(%u%n)") %></p>
+  <% end %>

@@ -2,13 +2,8 @@ class BudgetsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @user = current_user
-    @budgets = @user.budgets
-  end
-
-  def show
-    @budget = current_user.budgets.find(params[:id])
-    @transactions = @budget.transactions.order("created_at")
+    @budget = current_user.budget
+    @transactions = current_user.transactions
     @budget_items = @budget.budget_items
 
     @spent = spent(@transactions)

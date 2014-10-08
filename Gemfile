@@ -10,6 +10,7 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'foundation-rails', '5.4.3.1'
 gem 'pickadate-rails'
+gem 'kaminari'
 
 group :development, :test do
   gem 'capybara'

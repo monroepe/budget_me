@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: 'welcome#index'
 
-  resources :budgets do
-    resources :transactions, only: [:new, :create, :edit, :update, :destroy]
+  devise_for :users
+
+  resources :users, only: [] do
+    resources :transactions, except: [:show]
   end
 
-  resources :budgets do
-    resources :budget_items, only: [:new, :create, :edit, :update, :destroy]
+  resources :users, only: [] do
+    resources :budgets, except: [:show]
+  end
+
+  resources :budgets, only: []do
+    resources :budget_items, except: [:show]
   end
 end

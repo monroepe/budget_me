@@ -1,43 +1,42 @@
 class TransactionsController < ApplicationController
+  def index
+    @transactions = current_user.transactions.page(params[:page])
+  end
+
   def new
-    @budget = current_user.budgets.find(params[:budget_id])
     @transaction = Transaction.new
   end
 
   def create
-    @budget = current_user.budgets.find(params[:budget_id])
-    @transaction = @budget.transactions.build(transaction_params)
+    @transaction = current_user.transactions.build(transaction_params)
 
     if @transaction.save
-      redirect_to @budget, notice: "Transaction created successfully!"
+      redirect_to user_transactions_path(current_user), notice: "Transaction created successfully!"
     else
       render "new"
     end
   end
 
   def edit
-    @budget = current_user.budgets.find(params[:budget_id])
-    @transaction = @budget.transactions.find(params[:id])
+    @transaction = current_user.transactions.find(params[:id])
   end
 
   def update
-    @budget = current_user.budgets.find(params[:budget_id])
-    @transaction = @budget.transactions.find(params[:id])
+    @transaction = current_user.transactions.find(params[:id])
 
     if @transaction.update(transaction_params)
-      redirect_to @budget, notice: "Transaction updated successfully!"
+      redirect_to user_transactions_path(current_user), notice: "Transaction updated successfully!"
     else
       render "edit"
     end
   end
 
   def destroy
-    @budget = current_user.budgets.find(params[:budget_id])
-    @transaction = @budget.transactions.find(params[:id])
+    @transaction = current_user.transactions.find(params[:id])
 
     @transaction.destroy
 
-    redirect_to budget_path(@budget), notice: "Transaction item deleted"
+    redirect_to user_transactions_path(current_user), notice: "Transaction item deleted"
   end
 
   private

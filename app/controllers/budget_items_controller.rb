@@ -1,11 +1,16 @@
 class BudgetItemsController < ApplicationController
+  def index
+    @budget = current_user.budget
+    @budget_items = @budget.budget_items.page(params[:page])
+  end
+
   def new
-    @budget = current_user.budgets.find(params[:budget_id])
+    @budget = current_user.budget
     @budget_item = BudgetItem.new
   end
 
   def create
-    @budget = current_user.budgets.find(params[:budget_id])
+    @budget = current_user.budget
     @budget_item = @budget.budget_items.build(budget_item_params)
 
     if @budget_item.save
@@ -16,12 +21,12 @@ class BudgetItemsController < ApplicationController
   end
 
   def edit
-    @budget = current_user.budgets.find(params[:budget_id])
+    @budget = current_user.budget
     @budget_item = @budget.budget_items.find(params[:id])
   end
 
   def update
-    @budget = current_user.budgets.find(params[:budget_id])
+    @budget = current_user.budget
     @budget_item = @budget.budget_items.find(params[:id])
 
     if @budget_item.update(budget_item_params)
@@ -32,7 +37,7 @@ class BudgetItemsController < ApplicationController
   end
 
   def destroy
-    @budget = current_user.budgets.find(params[:budget_id])
+    @budget = current_user.budget
     @budget_item = @budget.budget_items.find(params[:id])
 
     @budget_item.destroy

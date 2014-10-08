@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <div class="contain-to-grid">
     <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name">
@@ -45,13 +46,18 @@
     <!-- Left Nav Section -->
     <ul class="left">
     <% if current_user %>
-      <li><%= link_to "My Budgets", budgets_path %></li>
+      <li><%= link_to "My Budgets", user_budgets_path(current_user) %></li>
     <% end %>
     </ul>
   </section>
 </nav>
+</div>
 
-    <%= yield %>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= yield %>
+      </div>
+    </div>
 
     <%= javascript_include_tag "application" %>
   </body>

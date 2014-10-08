@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :budgets, dependent: :destroy
+  has_many :transactions, dependent: :destroy
+  has_one :budget, dependent: :destroy
 
   validates :first_name, :last_name, presence: true
 
