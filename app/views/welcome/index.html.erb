@@ -1,3 +1,5 @@
 <h1>Welcome to Budget Me</h1>
 
-<%= link_to "View Your Budgets", user_budgets_path(current_user) %>
+<% if current_user %>
+  <%= link_to "View Your Budgets", user_budgets_path(current_user) %>
+<% end %>

@@ -25,4 +25,5 @@ $(function(){
   $('#transaction_date').pickadate();
   $('#budget_item_date').pickadate();
   $('#transactions').dataTable();
+  $('#budget-items').dataTable();
 });
