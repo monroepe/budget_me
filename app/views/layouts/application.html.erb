@@ -46,7 +46,7 @@
     <!-- Left Nav Section -->
     <ul class="left">
     <% if current_user %>
-      <li><%= link_to "My Budgets", budgets_path %></li>
+      <li><%= link_to "My Budgets", user_budgets_path(current_user) %></li>
     <% end %>
     </ul>
   </section>

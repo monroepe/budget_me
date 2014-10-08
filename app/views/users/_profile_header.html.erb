@@ -1,6 +1,6 @@
 <dl class="tabs">
   <dd class="<%= "active" if current_tab == 'details' %>">
-    <%= link_to "Details", "#" %>
+    <%= link_to "Details", user_budgets_path(current_user) %>
   </dd>
   <dd class="<%= "active" if current_tab == 'budget' %>">
     <%= link_to "Budget", budget_budget_items_path(current_user.budget) %>

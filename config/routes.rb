@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :transactions, except: [:show]
   end
 
-  resources :budgets
+  resources :users, only: [] do
+    resources :budgets, except: [:show]
+  end
 
   resources :budgets, only: []do
     resources :budget_items, except: [:show]
