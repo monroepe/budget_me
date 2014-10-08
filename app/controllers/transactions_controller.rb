@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   def index
-    @transactions = Transaction.all.page(params[:page])
+    @transactions = current_user.transactions.page(params[:page])
   end
 
   def new

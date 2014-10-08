@@ -1,11 +1,11 @@
 <dl class="tabs">
   <dd class="<%= "active" if current_tab == 'details' %>">
-    <a href="#panel1">Details</a>
+    <%= link_to "Details", "#" %>
+  </dd>
+  <dd class="<%= "active" if current_tab == 'budget' %>">
+    <%= link_to "Budget", budget_budget_items_path(current_user.budget) %>
   </dd>
   <dd class="<%= "active" if current_tab == 'transactions' %>">
     <%= link_to 'Transactions', user_transactions_path(current_user) %>
-  </dd>
-  <dd class="<%= "active" if current_tab == 'budget' %>">
-    <a href="#panel3">Budget</a>
   </dd>
 </dl>
