@@ -2,8 +2,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 
-  validates :type, presence: true
-  validates :name, :amount, :user_id, presence: true
+  validates :name, :amount, :user_id, :type, presence: true
 
   def expense?
     self.amount < 0

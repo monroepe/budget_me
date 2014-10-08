@@ -27,7 +27,11 @@
     <% @budget_items.each do |budget_item| %>
       <tr>
         <td><%= budget_item.category.name %></td>
-        <td><%= number_to_currency(budget_item.amount, precision: 2) %></td>
+        <% if budget_item.amount > 0 %>
+          <td class="income"><%= number_to_currency(budget_item.amount, precision: 2) %></td>
+        <% else %>
+          <td class="expense"><%= number_to_currency(budget_item.amount, precision: 2, negative_format: "(%u%n)") %></td>
+        <% end %>
         <td><%= budget_item.description %></td>
         <% if budget_item.date %>
           <td><%= budget_item.date.strftime("%m/%d/%Y") %></td>

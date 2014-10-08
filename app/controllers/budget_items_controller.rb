@@ -14,7 +14,7 @@ class BudgetItemsController < ApplicationController
     @budget_item = @budget.budget_items.build(budget_item_params)
 
     if @budget_item.save
-      redirect_to @budget, notice: "Budget item created successfully!"
+      redirect_to user_budgets_path(current_user), notice: "Budget item created successfully!"
     else
       render "new"
     end
@@ -30,7 +30,7 @@ class BudgetItemsController < ApplicationController
     @budget_item = @budget.budget_items.find(params[:id])
 
     if @budget_item.update(budget_item_params)
-      redirect_to @budget, notice: "Budget item updated successfully!"
+      redirect_to user_budgets_path(current_user), notice: "Budget item updated successfully!"
     else
       render "edit"
     end
@@ -42,12 +42,12 @@ class BudgetItemsController < ApplicationController
 
     @budget_item.destroy
 
-    redirect_to budget_path(@budget), notice: "Budget item deleted"
+    redirect_to user_budgets_path(current_user), notice: "Budget item deleted"
   end
 
   private
 
   def budget_item_params
-    params.require(:budget_item).permit(:date, :amount, :category_id, :description)
+    params.require(:budget_item).permit(:date, :amount, :category_id, :description, :type)
   end
 end
