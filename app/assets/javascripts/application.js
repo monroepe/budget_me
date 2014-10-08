@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require jquery.dataTables.min
+//= require dataTables.foundation
 //= require pickadate/picker
 //= require pickadate/picker.date
 //= require pickadate/picker.time
@@ -22,4 +24,5 @@ $(function(){
   $(document).foundation();
   $('#transaction_date').pickadate();
   $('#budget_item_date').pickadate();
+  $('#transactions').dataTable();
 });

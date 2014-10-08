@@ -1,7 +1,7 @@
 class BudgetItemsController < ApplicationController
   def index
     @budget = current_user.budget
-    @budget_items = @budget.budget_items.page(params[:page])
+    @budget_items = @budget.budget_items
   end
 
   def new
