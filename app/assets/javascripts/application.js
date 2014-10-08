@@ -24,6 +24,13 @@ $(function(){
   $(document).foundation();
   $('#transaction_date').pickadate();
   $('#budget_item_date').pickadate();
-  $('#transactions').dataTable();
-  $('#budget-items').dataTable();
+  $('#transactions').dataTable( {
+    "aoColumnDefs": [
+      { "bSortable": false, "aTargets": [ 5, 6 ] }
+    ] } );
+
+  $('#budget-items').dataTable( {
+    "aoColumnDefs": [
+      { "bSortable": false, "aTargets": [ 4, 5 ] }
+    ] } );
 });
