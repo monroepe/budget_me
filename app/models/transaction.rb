@@ -2,10 +2,19 @@ class Transaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 
+  validates :type, presence: true
   validates :name, :amount, :user_id, presence: true
 
   def expense?
     self.amount < 0
+  end
+
+  attr_accessor :type
+
+  before_save do
+    if type == "Expense"
+      self.amount = -(self.amount) if self.amount > 0
+    end
   end
 
   def self.search(search)
