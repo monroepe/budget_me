@@ -12,7 +12,7 @@ class BudgetItem < ActiveRecord::Base
 
   before_save do
     if type == "Expense"
-      self.amount = -(self.amount) if self.amount > 0
+      amount = -(amount) if amount > 0
     end
   end
 end
