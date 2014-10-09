@@ -1,22 +1,22 @@
-<%= form_for @budget do |f| %>
+<%= simple_form_for [current_user, @budget] do |f| %>
 
   <% if @budget.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
+      <h2><%= pluralize(@budget.errors.count, "error") %> prohibited this budget item from being saved:</h2>
 
       <ul>
-        <% @budget.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
+      <% @budget.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
       </ul>
     </div>
   <% end %>
 
   <p class="form-field">
-    <%= f.text_field :name, placeholder: "Name" %>
+    <%= f.input :name, placeholder: "Name" %>
   </p>
 
   <p class="form-field">
-    <%= f.submit %>
+    <%= f.button :submit %>
   </p>
 <% end %>
