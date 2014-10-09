@@ -33,7 +33,7 @@ class BudgetsController < ApplicationController
     @budget = current_user.budget
 
     if @budget.update(budget_params)
-      redirect_to user_budgets_path(current_user), notice: "Budget name updated successfully!"
+      redirect_to user_budgets_path(current_user), notice: "Budget updated successfully!"
     else
       render "edit"
     end
@@ -44,7 +44,7 @@ class BudgetsController < ApplicationController
 
     @budget.destroy
 
-    redirect_to root_path, notice: "Budget destroyed successfully!"
+    redirect_to root_path, notice: "Budget deleted successfully!"
   end
 
   private
