@@ -30,7 +30,7 @@
         <% if budget_item.amount > 0 %>
           <td class="income"><%= number_to_currency(budget_item.amount, precision: 2) %></td>
         <% else %>
-          <td class="expense"><%= number_to_currency(budget_item.amount, precision: 2, negative_format: "(%u%n)") %></td>
+          <td class="expense"><%= number_to_currency(budget_item.amount, precision: 2) %></td>
         <% end %>
         <td><%= budget_item.description %></td>
         <% if budget_item.date %>
