@@ -8,7 +8,7 @@ class Budget < ActiveRecord::Base
     expenses = 0
     self.budget_items.each do |budget_item|
       if budget_item.expense?
-        expenses += budget_item.amount
+        expenses += budget_item.monthly
       end
     end
 
@@ -19,7 +19,7 @@ class Budget < ActiveRecord::Base
     income = 0
     self.budget_items.each do |budget_item|
       if !budget_item.expense?
-        income += budget_item.amount
+        income += budget_item.monthly
       end
     end
 
