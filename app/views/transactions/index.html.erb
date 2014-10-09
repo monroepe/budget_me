@@ -32,7 +32,7 @@
         <% if transaction.amount > 0 %>
           <td class="income"><%= number_to_currency(transaction.amount, precision: 2) %></td>
         <% else %>
-          <td class="expense"><%= number_to_currency(transaction.amount, precision: 2, negative_format: "(%u%n)") %></td>
+          <td class="expense"><%= number_to_currency(transaction.amount, precision: 2) %></td>
         <% end %>
         <td><%= transaction.category.name %></td>
         <td><%= transaction.description %></td>
