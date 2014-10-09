@@ -2,10 +2,21 @@
 
 <h3>Details</h3>
 
+<h4>Transactions</h4>
+
   <p>Total Income: <%= number_to_currency(@income, precision: 2) %></p>
-  <p>Total Spent: <%= number_to_currency(@spent, precision: 2, negative_format: "(%u%n)") %></p>
+  <p>Total Expense: <%= number_to_currency(@spent, precision: 2, negative_format: "(%u%n)") %></p>
   <% if @income > @spent.abs %>
     <p class="income">Amount Left: <%= number_to_currency((@income - @spent.abs), precision: 2) %></p>
   <% else %>
     <p class="expense">Amount Left: <%= number_to_currency((@income - @spent.abs), precision: 2, negative_format: "(%u%n)") %></p>
   <% end %>
+
+<h4>Monthly Budget</h4>
+  <p>Total Income: <%= number_to_currency(@budget.income, precision: 2) %></p>
+    <p>Total Expenses: <%= number_to_currency(@budget.expenses, precision: 2, negative_format: "(%u%n)") %></p>
+    <% if @budget.income > @budget.expenses.abs %>
+      <p class="income">Amount Left: <%= number_to_currency((@budget.income - @budget.expenses.abs), precision: 2) %></p>
+    <% else %>
+      <p class="expense">Amount Left: <%= number_to_currency((@budget.income - @budget.expenses.abs), precision: 2, negative_format: "(%u%n)") %></p>
+    <% end %>

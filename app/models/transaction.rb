@@ -12,7 +12,9 @@ class Transaction < ActiveRecord::Base
 
   before_save do
     if type == "Expense"
-      amount = -(amount) if amount > 0
+      self.amount = -(self.amount) if self.amount > 0
+    else
+      self.amount = -(self.amount) if self.amount < 0
     end
   end
 
