@@ -81,8 +81,6 @@ feature "Edit transaction" do
     sign_in_as(user)
     visit edit_user_transaction_path(user, transaction)
 
-    fill_in "Name", with: "New car"
-    fill_in "Amount", with: 17600
     select(category.name, from: "Category")
     click_on "Update Transaction"
 

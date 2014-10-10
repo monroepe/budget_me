@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Delete transaction" do
-  scenario "user deletes budget succesfully" do
+  scenario "user deletes transaction succesfully" do
     budget = FactoryGirl.create(:budget)
     category = FactoryGirl.create(:category)
     user = budget.user
