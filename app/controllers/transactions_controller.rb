@@ -36,7 +36,7 @@ class TransactionsController < ApplicationController
 
     @transaction.destroy
 
-    redirect_to user_transactions_path(current_user), notice: "Transaction item deleted"
+    redirect_to user_transactions_path(current_user), notice: "Transaction deleted successfully!"
   end
 
   private

@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Delete budget" do
-  scenario "user deletss budget succesfully" do
+  scenario "user deletes budget succesfully" do
     budget = FactoryGirl.create(:budget)
     sign_in_as(budget.user)
 
