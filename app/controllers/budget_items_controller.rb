@@ -48,6 +48,6 @@ class BudgetItemsController < ApplicationController
   private
 
   def budget_item_params
-    params.require(:budget_item).permit(:date, :amount, :category_id, :description, :type)
+    params.require(:budget_item).permit(:date, :amount, :category_id, :duration_id, :description, :type)
   end
 end
