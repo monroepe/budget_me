@@ -9,8 +9,9 @@
         <th>Amount</th>
         <th>Description</th>
         <th>Duration</th>
-        <th></th>
-        <th></th>
+        <th><i class="fa fa-info-circle"></i></th>
+        <th><i class="fa fa-pencil-square-o"></i></th>
+        <th><i class="fa fa-times"></i></th>
       </tr>
     </thead>
     <tfoot>
@@ -19,8 +20,9 @@
         <th>Amount</th>
         <th>Description</th>
         <th>Duration</th>
-        <th></th>
-        <th></th>
+        <th><i class="fa fa-info-circle"></i></th>
+        <th><i class="fa fa-pencil-square-o"></i></th>
+        <th><i class="fa fa-times"></i></th>
       </tr>
     </tfoot>
     <tbody>
@@ -34,6 +36,7 @@
         <% end %>
         <td><%= budget_item.description %></td>
         <td><%= budget_item.duration.name %></td>
+        <td><%= link_to "More", budget_budget_item_path(@budget, budget_item) %></td>
         <td><%= link_to "Edit", edit_budget_budget_item_path(@budget, budget_item) %></td>
         <td><%= link_to "Delete", budget_budget_item_path(@budget, budget_item), method: :delete, data: { confirm: "Are your sure?" } %></td>
       </tr>

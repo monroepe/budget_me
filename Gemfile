@@ -12,6 +12,7 @@ gem 'foundation-rails', '5.4.3.1'
 gem 'pickadate-rails'
 gem 'simple_form'
 gem 'quiet_assets', group: :development
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'capybara'

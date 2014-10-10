@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [] do
-    resources :transactions, except: [:show]
+    resources :transactions
   end
 
   resources :users, only: [] do
@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :budgets, only: []do
-    resources :budget_items, except: [:show]
+    resources :budget_items
   end
 end
