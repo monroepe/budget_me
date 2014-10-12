@@ -28,12 +28,12 @@ $(function(){
   $('#budget_item_date').pickadate();
   $('#transactions').dataTable({
     "aoColumnDefs": [
-      {"bSortable": false, "aTargets": [ 5, 6 ]}
+      {"bSortable": false, "aTargets": [ 5, 6, 7 ]}
     ]
   });
   $('#budget-items').dataTable({
     "aoColumnDefs": [
-      {"bSortable": false, "aTargets": [ 4, 5 ]}
+      {"bSortable": false, "aTargets": [ 4, 5, 6 ]}
     ]
   });
   // $(function () {
