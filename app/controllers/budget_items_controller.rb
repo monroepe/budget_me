@@ -4,6 +4,12 @@ class BudgetItemsController < ApplicationController
     @budget_items = @budget.budget_items
   end
 
+  def show
+    @budget = current_user.budget
+    @budget_item = @budget.budget_items.find(params[:id])
+    gon.transactions = current_user.transactions.where(category_id: @budget_item.category_id)
+  end
+
   def new
     @budget = current_user.budget
     @budget_item = BudgetItem.new

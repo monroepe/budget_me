@@ -3,6 +3,10 @@ class TransactionsController < ApplicationController
     @transactions = current_user.transactions
   end
 
+  def show
+
+  end
+
   def new
     @transaction = Transaction.new
   end
