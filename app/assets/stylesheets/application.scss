@@ -3,4 +3,30 @@
 @import "pickadate/default";
 @import "pickadate/default.date";
 @import "pickadate/default.time";
-@import "custom";
+
+body  {
+  background: url('yellow.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#user_name {
+  color: $white;
+  background-color: #3f5f5f;
+  padding: 10px;
+}
+
+.form-field {
+  width: 300px;
+  margin-left: 5px;
+}
+
+.income {
+  color: green;
+}
+
+.expense {
+  color: red;
+}
