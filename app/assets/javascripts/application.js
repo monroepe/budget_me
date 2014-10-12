@@ -18,19 +18,55 @@
 //= require pickadate/picker
 //= require pickadate/picker.date
 //= require pickadate/picker.time
+//= require highcharts
+//= require highcharts/highcharts-more
 //= require_tree .
 
 $(function(){
   $(document).foundation();
   $('#transaction_date').pickadate();
   $('#budget_item_date').pickadate();
-  $('#transactions').dataTable( {
+  $('#transactions').dataTable({
     "aoColumnDefs": [
-      { "bSortable": false, "aTargets": [ 5, 6 ] }
-    ] } );
-
-  $('#budget-items').dataTable( {
+      {"bSortable": false, "aTargets": [ 5, 6 ]}
+    ]
+  });
+  $('#budget-items').dataTable({
     "aoColumnDefs": [
-      { "bSortable": false, "aTargets": [ 4, 5 ] }
-    ] } );
+      {"bSortable": false, "aTargets": [ 4, 5 ]}
+    ]
+  });
+  // $(function () {
+  //   $('#transactions-chart').highcharts({
+  //       title: {
+  //           text: 'Budget vs Actual Spending',
+  //           x: -20
+  //       },
+  //       xAxis: {
+  //           type: "datetime"
+  //       },
+  //       yAxis: {
+  //           title: {
+  //               text: 'Dollars ($)'
+  //           },
+  //           plotLines: [{
+  //               value: 0,
+  //               width: 1,
+  //               color: '#808080'
+  //           }]
+  //       },
+  //       tooltip: {
+  //           valuePrefix: '$'
+  //       },
+  //       legend: {
+  //           layout: 'vertical',
+  //           align: 'right',
+  //           verticalAlign: 'middle',
+  //           borderWidth: 0
+  //       },
+  //       series: [{
+  //           data: gon.transactions
+  //       }]
+  //   });
+  // });
 });

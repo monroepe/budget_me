@@ -4,10 +4,6 @@ class Transaction < ActiveRecord::Base
 
   validates :name, :amount, :user_id, :category_id, :type, presence: true
 
-  def expense?
-    self.amount < 0
-  end
-
   attr_accessor :type
 
   before_save do
@@ -18,12 +14,12 @@ class Transaction < ActiveRecord::Base
     end
   end
 
-  def self.search(search)
-    if search
-      category = Category.where("name ILIKE ?", "%#{search}%")
-      where(category_id: category.id)
-    else
-      all
-    end
+
+  def expense?
+    self.amount < 0
+  end
+
+  def self.by_month(month)
+    where("extract(month from date) = ?", month)
   end
 end
