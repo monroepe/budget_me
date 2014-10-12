@@ -7,7 +7,7 @@ class BudgetItemsController < ApplicationController
   def show
     @budget = current_user.budget
     @budget_item = @budget.budget_items.find(params[:id])
-    @transactions = current_user.transactions
+    gon.transactions = current_user.transactions.where(category_id: @budget_item.category_id)
   end
 
   def new
