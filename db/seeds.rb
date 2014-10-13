@@ -1,5 +1,5 @@
 durations = Duration.create([{ name: "monthly" }, { name: "weekly" }, { name: "daily" }])
-categories = Category.create([{name: "Bills"}, {name: "Food/Groceries"}, {name: "Clothes"}, {name: "Transportation"}, {name: "Recreation"}, {name: "Pay"}, {name: "Other"}])
+categories = Category.create([{ name: "Rent" }, {name: "Bills"}, {name: "Food/Groceries"}, {name: "Transportation"}, {name: "Recreation"}, {name: "Pay"}, {name: "Other"}])
 transactions = Transaction.create([
                                     { name: "Rent",
                                       amount: 1600,
@@ -12,7 +12,7 @@ transactions = Transaction.create([
                                     { name: "Internet",
                                       amount: 55,
                                       description: "High speed",
-                                      category_id: 1,
+                                      category_id: 2,
                                       type: "Expense",
                                       date: DateTime.parse("03/10/2014"),
                                       user_id: 1
@@ -20,7 +20,7 @@ transactions = Transaction.create([
                                     { name: "Lunch",
                                       amount: 8.50,
                                       description: "Lunch special",
-                                      category_id: 2,
+                                      category_id: 3,
                                       type: "Expense",
                                       date: DateTime.parse("02/10/2014"),
                                       user_id: 1
@@ -34,7 +34,7 @@ transactions = Transaction.create([
                                     },
                                     { name: "Toothpaste",
                                       amount: 2,
-                                      category_id: 2,
+                                      category_id: 3,
                                       type: "Expense",
                                       date: DateTime.parse("10/10/2014"),
                                       user_id: 1
@@ -80,35 +80,35 @@ transactions = Transaction.create([
                                     { name: "Lunch",
                                       amount: 11,
                                       description: "Tacos",
-                                      category_id: 2,
+                                      category_id: 3,
                                       type: "Expense",
                                       date: DateTime.parse("04/10/2014"),
                                       user_id: 1
                                     },
                                     { name: "New jacket",
                                       amount: 89.78,
-                                      category_id: 3,
+                                      category_id: 7,
                                       type: "Expense",
                                       date: DateTime.parse("08/10/2014"),
                                       user_id: 1
                                     },
                                     { name: "Groceries",
                                       amount: 97,
-                                      category_id: 2,
+                                      category_id: 3,
                                       type: "Expense",
                                       date: DateTime.parse("30/10/2014"),
                                       user_id: 1
                                     },
                                     { name: "Electrity",
                                       amount: 65,
-                                      category_id: 1,
+                                      category_id: 2,
                                       type: "Expense",
                                       date: DateTime.parse("22/10/2014"),
                                       user_id: 1
                                     },
                                     { name: "Gas bill",
                                       amount: 75,
-                                      category_id: 1,
+                                      category_id: 2,
                                       type: "Expense",
                                       date: DateTime.parse("25/10/2014"),
                                       user_id: 1
@@ -133,20 +133,20 @@ budget_items = BudgetItem.create([
                                     },
                                     { amount: 55,
                                       description: "Internet",
-                                      category_id: 1,
+                                      category_id: 2,
                                       budget_id: 1,
                                       type: "Expense",
                                       duration_id: 1
                                     },
                                     { amount: 250,
                                       description: "Groceries",
-                                      category_id: 2,
+                                      category_id: 3,
                                       type: "Expense",
                                       budget_id: 1
                                     },
                                     { amount: 65,
                                       description: "Electric bill",
-                                      category_id: 1,
+                                      category_id: 2,
                                       budget_id: 1,
                                       type: "Expense",
                                       duration_id: 1
@@ -160,7 +160,7 @@ budget_items = BudgetItem.create([
                                     },
                                     { amount: 20,
                                       description: "Lunch",
-                                      category_id: 2,
+                                      category_id: 3,
                                       budget_id: 1,
                                       type: "Expense",
                                       duration_id: 2
@@ -174,7 +174,7 @@ budget_items = BudgetItem.create([
                                     },
                                     { amount: 80,
                                       description: "Gas Bill",
-                                      category_id: 1,
+                                      category_id: 2,
                                       budget_id: 1,
                                       type: "Expense",
                                       duration_id: 1

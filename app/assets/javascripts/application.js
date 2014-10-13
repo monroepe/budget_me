@@ -36,37 +36,42 @@ $(function(){
       {"bSortable": false, "aTargets": [ 4, 5, 6 ]}
     ]
   });
-  // $(function () {
-  //   $('#transactions-chart').highcharts({
-  //       title: {
-  //           text: 'Budget vs Actual Spending',
-  //           x: -20
-  //       },
-  //       xAxis: {
-  //           type: "datetime"
-  //       },
-  //       yAxis: {
-  //           title: {
-  //               text: 'Dollars ($)'
-  //           },
-  //           plotLines: [{
-  //               value: 0,
-  //               width: 1,
-  //               color: '#808080'
-  //           }]
-  //       },
-  //       tooltip: {
-  //           valuePrefix: '$'
-  //       },
-  //       legend: {
-  //           layout: 'vertical',
-  //           align: 'right',
-  //           verticalAlign: 'middle',
-  //           borderWidth: 0
-  //       },
-  //       series: [{
-  //           data: gon.transactions
-  //       }]
-  //   });
-  // });
+  $(function () {
+    $('#transactions-chart').highcharts({
+        title: {
+            text: 'Budget vs Actual Spending',
+            x: -20
+        },
+        xAxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        yAxis: {
+            title: {
+                text: 'Dollars ($)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valuePrefix: '$'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Transactions',
+            data: gon.transactions
+          }, {
+            name: 'Budget',
+            data: gon.budget
+        }]
+    });
+  });
 });
