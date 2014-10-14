@@ -1,1 +1,34 @@
-<h1>Hello world</h1>
+<h1>Details</h1>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Amount</th>
+    <th>Category</th>
+    <th>Description</th>
+    <th>Date</th>
+    <th><i class="fa fa-pencil-square-o"></i></th>
+    <th><i class="fa fa-times"></i></th>
+  </tr>
+  <tr>
+    <td><%= @transaction.name %></td>
+    <% if @transaction.amount > 0 %>
+      <td class="income"><%= number_to_currency(@transaction.amount, precision: 2) %></td>
+    <% else %>
+      <td class="expense"><%= number_to_currency(@transaction.amount, precision: 2) %></td>
+    <% end %>
+    <td><%= @transaction.category.name %></td>
+    <td><%= @transaction.description %></td>
+    <% if @transaction.date %>
+      <td><%= @transaction.date.strftime("%m/%d/%Y") %></td>
+    <% else %>
+      <td></td>
+    <% end %>
+    <td><%= link_to "Edit", edit_user_transaction_path(current_user, @transaction) %></td>
+    <td><%= link_to "Delete", user_transaction_path(current_user, @transaction), method: :delete, data: { confirm: "Are your sure?" } %></td>
+  </tr>
+</table>
+
+<div class="budget_items_chart"></div>
+
+<p><%= link_to "Back", :back %></p>

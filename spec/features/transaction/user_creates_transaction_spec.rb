@@ -11,6 +11,7 @@ feature "Create transaction" do
 
     fill_in "Name", with: "Rent"
     fill_in "Amount", with: 1600
+    fill_in "Date", with: "12/12/2014"
     select(category.name, from: "Category")
     choose("Expense")
     click_on "Create Transaction"
@@ -40,6 +41,7 @@ feature "Create transaction" do
     visit new_user_transaction_path(user)
 
     fill_in "Amount", with: 1600
+    fill_in "Date", with: "12/12/2014"
     select(category.name, from: "Category")
     choose("Expense")
     click_on "Create Transaction"
@@ -57,6 +59,7 @@ feature "Create transaction" do
 
     fill_in "Name", with: "Rent"
     select(category.name, from: "Category")
+    fill_in "Date", with: "12/12/2014"
     choose("Expense")
     click_on "Create Transaction"
 
@@ -73,6 +76,7 @@ feature "Create transaction" do
 
     fill_in "Name", with: "Rent"
     fill_in "Amount", with: 1600
+    fill_in "Date", with: "12/12/2014"
     choose("Expense")
     click_on "Create Transaction"
 
@@ -89,7 +93,25 @@ feature "Create transaction" do
 
     fill_in "Name", with: "Rent"
     fill_in "Amount", with: 1600
+    fill_in "Date", with: "12/12/2014"
     select(category.name, from: "Category")
+    click_on "Create Transaction"
+
+    expect(page).to have_content "can't be blank"
+  end
+
+  scenario "user fails create transaction succesfully - no date" do
+    budget = FactoryGirl.create(:budget)
+    user = budget.user
+    category = FactoryGirl.create(:category)
+    sign_in_as(user)
+
+    visit new_user_transaction_path(user)
+
+    fill_in "Name", with: "Rent"
+    fill_in "Amount", with: 1600
+    select(category.name, from: "Category")
+    choose("Expense")
     click_on "Create Transaction"
 
     expect(page).to have_content "can't be blank"
