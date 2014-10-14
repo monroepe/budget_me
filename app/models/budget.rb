@@ -4,25 +4,18 @@ class Budget < ActiveRecord::Base
 
   validates :name, :user_id, presence: true
 
-  def expenses
-    expenses = 0
-    self.budget_items.each do |budget_item|
-      if budget_item.expense?
-        expenses += budget_item.monthly
-      end
+  def total(transactions, type)
+    if type == "income"
+      totals = transactions.where("amount > 0")
+    elsif type == "expense"
+      totals = transactions.where("amount < 0")
     end
 
-    expenses
-  end
-
-  def income
-    income = 0
-    self.budget_items.each do |budget_item|
-      if !budget_item.expense?
-        income += budget_item.monthly
-      end
+    total = 0
+    transactions.each do |transaction|
+      total += transaction.monthly
     end
 
-    income
+    total
   end
 end

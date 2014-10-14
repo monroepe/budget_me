@@ -4,10 +4,10 @@ class BudgetsController < ApplicationController
     @transactions = current_user.transactions
     @budget_items = @budget.budget_items
 
-    @spent = spent(@transactions)
-    @income = income(@transactions)
+    @spent = @budget.total(@transactions, "expense")
+    @income = @budget.total(@transactions, "income")
     gon.category = "General"
-    gon.transactions = get_transactions
+    gon.transactions = @transactions.get_transactions
     gon.budget = budget_amount
   end
 
@@ -50,30 +50,6 @@ class BudgetsController < ApplicationController
 
   private
 
-  def transactions_by_month
-    transactions = {}
-    (1..12).each do |month|
-      transactions[month] = @transactions.where("extract(month from date) = ?", month)
-    end
-
-    transactions
-  end
-
-  def get_transactions
-    totals = []
-    transactions = transactions_by_month
-
-    transactions.each do |_month, transaction|
-      total = 0
-      transaction.each do |amount|
-        total += amount.amount.abs.to_f
-      end
-      totals << total
-    end
-
-    totals
-  end
-
   def get_budget
     budget = @budget.budget_items
     total = 0
@@ -99,27 +75,4 @@ class BudgetsController < ApplicationController
   def budget_params
     params.require(:budget).permit(:name)
   end
-
-  def spent(transactions)
-    spent = 0
-
-    transactions.each do |transaction|
-      if transaction.expense?
-        spent += transaction.amount
-      end
-    end
-    spent
-  end
-
-  def income(transactions)
-    income = 0
-
-    transactions.each do |transaction|
-      if !transaction.expense?
-        income += transaction.amount
-      end
-    end
-    income
-  end
-
 end
