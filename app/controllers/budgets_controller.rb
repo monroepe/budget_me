@@ -20,7 +20,7 @@ class BudgetsController < ApplicationController
     @budget.user = current_user
 
     if @budget.save
-      redirect_to user_budgets_path(current_user), notice: "Budget created successfully!"
+      redirect_to user_budget_path(current_user, @budget), notice: "Budget created successfully!"
     else
       render "new"
     end
@@ -34,7 +34,7 @@ class BudgetsController < ApplicationController
     @budget = current_user.budget
 
     if @budget.update(budget_params)
-      redirect_to user_budgets_path(current_user), notice: "Budget updated successfully!"
+      redirect_to user_budget_path(current_user, @budget), notice: "Budget updated successfully!"
     else
       render "edit"
     end
