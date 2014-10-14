@@ -37,9 +37,10 @@ $(function(){
     ]
   });
   $(function () {
-    $('#transactions-chart').highcharts({
+    $('.budget_items_chart').highcharts({
+        colors: ['#E60000', '#009933'],
         title: {
-            text: 'Budget vs Actual Spending',
+            text: 'Budget vs Actual Spending'+' ('+ gon.category +')',
             x: -20
         },
         xAxis: {
@@ -66,7 +67,7 @@ $(function(){
             borderWidth: 0
         },
         series: [{
-            name: 'Transactions',
+            name: gon.category,
             data: gon.transactions
           }, {
             name: 'Budget',

@@ -8,6 +8,7 @@ class BudgetItemsController < ApplicationController
     @budget = current_user.budget
     @budget_item = @budget.budget_items.find(params[:id])
     @transactions = current_user.transactions.where(category_id: @budget_item.category_id)
+    gon.category = @budget_item.category.name
     gon.transactions = get_transactions
     gon.budget = budget_amount
   end
@@ -59,7 +60,7 @@ class BudgetItemsController < ApplicationController
     totals = []
     transactions = transactions_by_month
 
-    transactions.each do |month, transaction|
+    transactions.each do |_month, transaction|
       total = 0
       transaction.each do |amount|
         total += amount.amount.abs.to_f
@@ -73,7 +74,7 @@ class BudgetItemsController < ApplicationController
   def transactions_by_month
     transactions = {}
     (1..12).each do |month|
-      transactions[month] = @transactions.where('extract(month from date) = ?', month)
+      transactions[month] = @transactions.where("extract(month from date) = ?", month)
     end
 
     transactions

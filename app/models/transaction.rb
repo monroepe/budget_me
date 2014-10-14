@@ -2,7 +2,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 
-  validates :name, :amount, :user_id, :category_id, :type, presence: true
+  validates :name, :date, :amount, :user_id, :category_id, :type, presence: true
 
   attr_accessor :type
 
