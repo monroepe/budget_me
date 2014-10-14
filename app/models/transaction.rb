@@ -14,7 +14,6 @@ class Transaction < ActiveRecord::Base
     end
   end
 
-
   def expense?
     self.amount < 0
   end

@@ -19,7 +19,6 @@ class Budget < ActiveRecord::Base
     total
   end
 
-
   def get_budget(category_id)
     if category_id
       budget = self.budget_items.where(category_id: category_id)
@@ -35,7 +34,6 @@ class Budget < ActiveRecord::Base
 
     total
   end
-
 
   def budget_amount(category_id)
     total = self.get_budget(category_id)
