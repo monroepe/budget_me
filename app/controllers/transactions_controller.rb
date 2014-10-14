@@ -10,7 +10,7 @@ class TransactionsController < ApplicationController
     @transactions = current_user.transactions.where(category_id: @transaction.category_id)
     gon.category = @transaction.category.name
     gon.transactions = @transactions.get_transactions
-    gon.budget = budget_amount
+    gon.budget = @budget.budget_amount(@transaction.category_id)
   end
 
   def new
@@ -50,28 +50,6 @@ class TransactionsController < ApplicationController
   end
 
   private
-
-  def get_budget
-    budget = @budget.budget_items.where(category_id: @transaction.category_id)
-    total = 0
-
-    budget.each do |item|
-      total += item.monthly.abs.to_f
-    end
-
-    total
-  end
-
-  def budget_amount
-    total = get_budget
-
-    budget = []
-    12.times do
-      budget << total
-    end
-
-    budget
-  end
 
   def transaction_params
     params.require(:transaction).permit(:date, :name, :amount, :category_id, :description, :type)

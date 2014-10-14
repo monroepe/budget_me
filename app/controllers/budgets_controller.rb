@@ -8,7 +8,7 @@ class BudgetsController < ApplicationController
     @income = @budget.total(@transactions, "income")
     gon.category = "General"
     gon.transactions = @transactions.get_transactions
-    gon.budget = budget_amount
+    gon.budget = @budget.budget_amount(nil)
   end
 
   def new
@@ -49,28 +49,6 @@ class BudgetsController < ApplicationController
   end
 
   private
-
-  def get_budget
-    budget = @budget.budget_items
-    total = 0
-
-    budget.each do |item|
-      total += item.monthly.abs.to_f
-    end
-
-    total
-  end
-
-  def budget_amount
-    total = get_budget
-
-    budget = []
-    12.times do
-      budget << total
-    end
-
-    budget
-  end
 
   def budget_params
     params.require(:budget).permit(:name)

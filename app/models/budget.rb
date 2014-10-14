@@ -18,4 +18,33 @@ class Budget < ActiveRecord::Base
 
     total
   end
+
+
+  def get_budget(category_id)
+    if category_id
+      budget = self.budget_items.where(category_id: category_id)
+    else
+      budget = self.budget_items
+    end
+
+    total = 0
+
+    budget.each do |item|
+      total += item.monthly.abs.to_f
+    end
+
+    total
+  end
+
+
+  def budget_amount(category_id)
+    total = self.get_budget(category_id)
+
+    budget = []
+    12.times do
+      budget << total
+    end
+
+    budget
+  end
 end
