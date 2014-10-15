@@ -9,8 +9,9 @@ class BudgetsController < ApplicationController
     @spent = @budget.total(@transactions, "expense")
     @income = @budget.total(@transactions, "income")
     gon.category = "General"
-    gon.transactions = @transactions.get_transactions
+    gon.transactions = @transactions.where.not(category_id: 6).get_transactions
     gon.budget = @budget.budget_amount(nil)
+    gon.pie_budget = @budget.category_data
   end
 
   def new
