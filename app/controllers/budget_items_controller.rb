@@ -1,4 +1,6 @@
 class BudgetItemsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @budget = current_user.budget
     @budget_items = @budget.budget_items
