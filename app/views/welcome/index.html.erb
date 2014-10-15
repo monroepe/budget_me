@@ -1,1 +1,9 @@
-<h1>Welcome to Budget Me</h1>
+<div class="welcome-container">
+  <h1>Welcome to BudgetMe</h1>
+
+  <% if current_user %>
+    <p><%= button_to "View your budget", "#", class: "welcome-button" %></p>
+  <% else %>
+    <p><%= button_to "Create your budget", "#", class: "welcome-button" %></p>
+  <% end %>
+</div>

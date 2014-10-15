@@ -1,4 +1,6 @@
 class BudgetsController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @budget = current_user.budget
     @transactions = current_user.transactions
