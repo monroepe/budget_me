@@ -6,7 +6,7 @@
 @import "font-awesome";
 
 body  {
-  background: url(<%= asset_path 'yellow.jpg' %>) no-repeat center center fixed;
+  background: image_url('yellow.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
