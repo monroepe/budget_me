@@ -1,6 +1,7 @@
 <div class="welcome-container">
   <h1>Welcome to BudgetMe</h1>
-
+<br />
+<br />
   <% if current_user && current_user.budget %>
     <p><%= link_to "View your budget", user_budget_path(current_user, current_user.budget), class: "welcome-button" %></p>
   <% elsif current_user && !current_user.budget %>

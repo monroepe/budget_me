@@ -23,7 +23,7 @@ class Budget < ActiveRecord::Base
     if category_id
       budget = self.budget_items.where(category_id: category_id)
     else
-      budget = self.budget_items
+      budget = self.budget_items.where.not(category_id: 6)
     end
 
     total = 0
@@ -44,5 +44,23 @@ class Budget < ActiveRecord::Base
     end
 
     budget
+  end
+
+  def budget_percentage(category_id)
+    budget = self.get_budget(category_id)
+    total = self.total(self.budget_items, "expense")
+    ((budget / total) * 100).abs.to_f
+  end
+
+  def category_data
+    categories = []
+
+    Category.all.each do |category|
+      unless category.name == "Pay"
+        categories << [category.name, budget_percentage(category.id)]
+      end
+    end
+
+    categories
   end
 end

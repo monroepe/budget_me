@@ -1,8 +1,37 @@
 <%= render "users/profile_header", current_tab: "budget" %>
 
 <br />
-  <p><%= link_to "New Budget Item", new_budget_budget_item_path(@budget) %></p>
+<p><%= link_to "New Budget Item", new_budget_budget_item_path(@budget) %></p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Totals</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Income</td>
+      <td><%= number_to_currency(@income, precision: 2) %></td>
+    </tr>
+    <tr>
+      <td>Expenses</td>
+      <td><%= number_to_currency(@expenses, precision: 2, negative_format: "(%u%n)") %></td>
+    </tr>
+    <tr>
+      <% if @difference > 0 %>
+        <td class="income total">Under Budget</td>
+        <td class="income total"><%= number_to_currency(@difference, precision: 2) %></td>
+      <% else %>
+        <td class="expense total">Over Budget</td>
+        <td class="expense total"><%= number_to_currency(@difference, precision: 2) %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+<br />
   <table id="budget-items" class="display" cellspacing="0" width="100%">
     <thead>
       <tr>
@@ -44,3 +73,5 @@
     <% end %>
     </tbody>
   </table>
+
+<p><%= link_to "New Budget Item", new_budget_budget_item_path(@budget) %></p>

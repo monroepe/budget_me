@@ -1,7 +1,7 @@
 <%= render "users/profile_header", current_tab: "transactions" %>
 
 <br />
-  <p><%= link_to "Add new transaction", new_user_transaction_path(current_user) %></p>
+<p><%= link_to "Add new transaction", new_user_transaction_path(current_user) %></p>
 
   <table id="transactions" class="display" cellspacing="0" width="100%">
     <thead>
@@ -51,3 +51,5 @@
     <% end %>
     </tbody>
   </table>
+
+<p><%= link_to "Add new transaction", new_user_transaction_path(current_user) %></p>
