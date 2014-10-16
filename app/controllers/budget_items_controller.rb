@@ -4,6 +4,10 @@ class BudgetItemsController < ApplicationController
   def index
     @budget = current_user.budget
     @budget_items = @budget.budget_items
+
+    @expenses = -(@budget.get_budget(nil))
+    @income = @budget.get_budget(6)
+    @difference = @income - @expenses.abs
   end
 
   def show

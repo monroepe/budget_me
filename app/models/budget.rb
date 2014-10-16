@@ -49,7 +49,7 @@ class Budget < ActiveRecord::Base
   def budget_percentage(category_id)
     budget = self.get_budget(category_id)
     total = self.total(self.budget_items, "expense")
-    ((budget / total) * 100).to_f
+    ((budget / total) * 100).abs.to_f
   end
 
   def category_data

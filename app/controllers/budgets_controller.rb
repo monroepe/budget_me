@@ -6,8 +6,6 @@ class BudgetsController < ApplicationController
     @transactions = current_user.transactions
     @budget_items = @budget.budget_items
 
-    @spent = @budget.total(@transactions, "expense")
-    @income = @budget.total(@transactions, "income")
     gon.category = "General"
     gon.transactions = @transactions.where.not(category_id: 6).get_transactions
     gon.budget = @budget.budget_amount(nil)
