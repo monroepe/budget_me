@@ -5,7 +5,7 @@
 
 <p>By Year:
 <% @years.each do |year| %>
-  <a href="#"> <%= year %> </a>
+  <%= link_to year, user_transactions_path(current_user, year: year) %>
 <% end %>
 </p>
 
