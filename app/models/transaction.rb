@@ -49,4 +49,14 @@ class Transaction < ActiveRecord::Base
 
     totals
   end
+
+  def self.years(transactions)
+    years = ["All"]
+
+    transactions.each do |transaction|
+      years << transaction.date.year if !years.include?(transaction.date.year)
+    end
+
+    years
+  end
 end

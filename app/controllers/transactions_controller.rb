@@ -3,6 +3,7 @@ class TransactionsController < ApplicationController
 
   def index
     @transactions = current_user.transactions
+    @years = Transaction.years(@transactions)
   end
 
   def show
