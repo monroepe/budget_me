@@ -23,7 +23,9 @@ class Transaction < ActiveRecord::Base
   end
 
   def self.by_year(year)
-    if year.nil? || year == "All"
+    if year.nil?
+      where("extract(year from date) = ?", Time.now.year)
+    elsif year == "All"
       all
     else
       where("extract(year from date) = ?", year)

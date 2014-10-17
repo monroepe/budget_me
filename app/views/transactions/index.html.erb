@@ -3,11 +3,12 @@
 <br />
 <p><%= link_to "Add new transaction", new_user_transaction_path(current_user) %></p>
 
-<p>By Year:
-<% @years.each do |year| %>
-  <%= link_to year, user_transactions_path(current_user, year: year) %>
-<% end %>
-</p>
+<ul class="years">
+  <li>By Year: </li>
+  <% @years.each do |year| %>
+    <li class=<%= "current-year" if (year.to_s == params[:year]) %>><%= link_to year, user_transactions_path(current_user, year: year) %></li>
+  <% end %>
+</ul>
 
 <table id="transactions" class="display" cellspacing="0" width="100%">
   <thead>
