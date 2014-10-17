@@ -13,7 +13,7 @@
   <% end %>
 
   <p class="form-field">
-    <%= f.input :type, collection: ["Expense", "Income"], as: :radio_buttons, required: true, class: "same-line" %>
+    <%= f.input :type, collection: ["Expense", "Income"], as: :radio_buttons, required: true, item_wrapper_class: "inline" %>
 
     <%= f.input :date, as: :string, input_html: { class: "datepicker" }, label: "Transaction Date" %>
 
