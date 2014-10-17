@@ -1,15 +1,16 @@
 <%= render "users/profile_header", current_tab: "details" %>
 
 <br />
-<p><%= link_to "Edit Budget", budget_budget_items_path(@budget) %> | <%= link_to "Delete Budget", user_budget_path(current_user, @budget), method: :delete, data: { confirm: "Are your sure?" }  %></p>
-
 <ul class="years">
+<li><%= link_to "Edit Budget", budget_budget_items_path(@budget) %> | <%= link_to "Delete Budget", user_budget_path(current_user, @budget), method: :delete, data: { confirm: "Are your sure?" }  %></li>
+<span class="float-right">
   <li>By Year: </li>
   <% @years.each do |year| %>
     <% if year != "All" %>
       <li class=<%= "current-year" if (year.to_s == params[:year]) %>><%= link_to year, user_budget_path(current_user, current_user.budget, year: year) %></li>
     <% end %>
   <% end %>
+</span>
 </ul>
 
 <div class="budget_items_chart"></div>
