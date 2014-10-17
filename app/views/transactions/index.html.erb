@@ -1,13 +1,14 @@
 <%= render "users/profile_header", current_tab: "transactions" %>
 
 <br />
-<p><%= link_to "Add new transaction", new_user_transaction_path(current_user) %></p>
-
 <ul class="years">
+<li><%= link_to "Add new transaction", new_user_transaction_path(current_user) %></li>
+<span class="float-right">
   <li>By Year: </li>
   <% @years.each do |year| %>
     <li class=<%= "current-year" if (year.to_s == params[:year]) %>><%= link_to year, user_transactions_path(current_user, year: year) %></li>
   <% end %>
+</span>
 </ul>
 
 <table id="transactions" class="display" cellspacing="0" width="100%">
