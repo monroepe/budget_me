@@ -21,9 +21,9 @@ class Budget < ActiveRecord::Base
 
   def get_budget(category_id)
     if category_id
-      budget = self.budget_items.where(category_id: category_id)
+      budget = self.budget_items.includes(:duration).where(category_id: category_id)
     else
-      budget = self.budget_items.where.not(category_id: 6)
+      budget = self.budget_items.includes(:duration).where.not(category_id: 6)
     end
 
     total = 0
@@ -48,7 +48,7 @@ class Budget < ActiveRecord::Base
 
   def budget_percentage(category_id)
     budget = self.get_budget(category_id)
-    total = self.total(self.budget_items, "expense")
+    total = self.total(self.budget_items.includes(:duration), "expense")
     ((budget / total) * 100).abs.to_f
   end
 

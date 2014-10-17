@@ -3,7 +3,7 @@ class BudgetItemsController < ApplicationController
 
   def index
     @budget = current_user.budget
-    @budget_items = @budget.budget_items
+    @budget_items = @budget.budget_items.includes(:duration, :category)
 
     @expenses = -(@budget.get_budget(nil))
     @income = @budget.get_budget(6)
