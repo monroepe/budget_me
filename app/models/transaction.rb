@@ -22,6 +22,16 @@ class Transaction < ActiveRecord::Base
    self.amount
   end
 
+  def self.by_year(year)
+    if year.nil?
+      where("extract(year from date) = ?", Time.now.year)
+    elsif year == "All"
+      all
+    else
+      where("extract(year from date) = ?", year)
+    end
+  end
+
   def self.by_month(month)
     where("extract(month from date) = ?", month)
   end
@@ -48,5 +58,16 @@ class Transaction < ActiveRecord::Base
     end
 
     totals
+  end
+
+  def self.years(user)
+    transactions = user.transactions
+    years = ["All"]
+
+    transactions.each do |transaction|
+      years << transaction.date.year if !years.include?(transaction.date.year)
+    end
+
+    years
   end
 end

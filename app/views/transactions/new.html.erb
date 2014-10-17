@@ -2,4 +2,4 @@
 
 <%= render 'transactions/form', budget: @budget, transaction: @transaction %>
 
-<%= link_to 'Back', @budget %>
+<%= link_to 'Back', user_transactions_path(current_user) %>
