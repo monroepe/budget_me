@@ -13,6 +13,7 @@ class BudgetItemsController < ApplicationController
   def show
     @budget = current_user.budget
     @budget_item = @budget.budget_items.find(params[:id])
+    @budget_items = @budget.budget_items.includes(:category).where(category_id: @budget_item.category_id)
     @transactions = current_user.transactions.where(category_id: @budget_item.category_id)
     gon.category = @budget_item.category.name
     gon.transactions = @transactions.get_transactions
