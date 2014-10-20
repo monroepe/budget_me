@@ -3,7 +3,7 @@
 <br />
 <br />
   <% if current_user && current_user.budget %>
-    <p><%= link_to "View your budget", user_budget_path(current_user, current_user.budget), class: "welcome-button" %></p>
+    <p><%= link_to "View your budget", budget_budget_items_path(current_user.budget), class: "welcome-button" %></p>
   <% elsif current_user && !current_user.budget %>
     <p><%= link_to "Create your budget", new_user_budget_path(current_user), class: "welcome-button" %></p>
   <% else %>

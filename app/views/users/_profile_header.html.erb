@@ -1,11 +1,11 @@
 <dl class="tabs">
-  <dd class="<%= "active" if current_tab == 'details' %>">
-    <%= link_to "Details", user_budget_path(current_user, current_user.budget), class: "head-tags" %>
-  </dd>
   <dd class="<%= "active" if current_tab == 'budget' %>">
     <%= link_to "Budget", budget_budget_items_path(current_user.budget), class: "head-tags" %>
   </dd>
   <dd class="<%= "active" if current_tab == 'transactions' %>">
     <%= link_to 'Transactions', user_transactions_path(current_user), class: "head-tags" %>
+  </dd>
+  <dd class="<%= "active" if current_tab == 'details' %>">
+    <%= link_to "Details", user_budget_path(current_user, current_user.budget), class: "head-tags" %>
   </dd>
 </dl>
