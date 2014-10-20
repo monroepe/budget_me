@@ -4,7 +4,7 @@ class BudgetsController < ApplicationController
   def show
     @budget = current_user.budget
     @transactions = current_user.transactions.by_year(params[:year])
-    @budget_items = @budget.budget_items
+    @budget_items = @budget.budget_items.includes(:duration)
     @years = Transaction.years(current_user)
 
     gon.category = "General"

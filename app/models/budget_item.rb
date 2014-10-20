@@ -1,3 +1,4 @@
+include TransactionHelper
 class BudgetItem < ActiveRecord::Base
   belongs_to :budget
   belongs_to :category
@@ -26,10 +27,6 @@ class BudgetItem < ActiveRecord::Base
   attr_accessor :type
 
   before_save do
-    if type == "Expense"
-      self.amount = -(self.amount) if self.amount > 0
-    else
-      self.amount = -(self.amount) if self.amount < 0
-    end
+    self.type_correction
   end
 end

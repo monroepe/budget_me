@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @transactions = current_user.transactions.by_year(params[:year])
+    @transactions = current_user.transactions.includes(:category).by_year(params[:year])
     @years = Transaction.years(current_user)
   end
 

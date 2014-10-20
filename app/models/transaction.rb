@@ -1,3 +1,4 @@
+include ApplicationHelper
 class Transaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
@@ -7,11 +8,7 @@ class Transaction < ActiveRecord::Base
   attr_accessor :type
 
   before_save do
-    if type == "Expense"
-      self.amount = -(self.amount) if self.amount > 0
-    else
-      self.amount = -(self.amount) if self.amount < 0
-    end
+    self.type_correction
   end
 
   def expense?
