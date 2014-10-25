@@ -4,6 +4,11 @@ class TransactionsController < ApplicationController
   def index
     @transactions = current_user.transactions.includes(:category).by_year(params[:year])
     @years = Transaction.years(current_user)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: { data: @transactions.map{ |t| [t.name, t.amount, t.category.name, t.description, t.date] } } }
+    end
   end
 
   def show

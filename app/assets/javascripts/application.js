@@ -26,16 +26,17 @@ $(function(){
   $(document).foundation();
   $('#transaction_date').pickadate();
   $('#budget_item_date').pickadate();
+
   $('#transactions').dataTable({
-    "aoColumnDefs": [
-      {"bSortable": false, "aTargets": [ 5, 6, 7 ]}
-    ]
+    "ajax": $('#transactions').data('source')
   });
+
   $('#budget-items').dataTable({
     "aoColumnDefs": [
       {"bSortable": false, "aTargets": [ 4, 5, 6 ]}
     ]
   });
+
   $(function () {
     $('.budget_items_chart').highcharts({
         colors: ['#E60000', '#009933'],
