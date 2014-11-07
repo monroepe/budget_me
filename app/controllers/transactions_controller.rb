@@ -7,7 +7,7 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: { data: @transactions.map{ |t| [t.name, t.amount, t.category.name, t.description, t.date] } } }
+      format.json { render json: { data: @transactions.map{ |t| [t.name, t.amount, t.category.name, t.description, t.date, "", "", ""] } } }
     end
   end
 
